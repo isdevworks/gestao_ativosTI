@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Estoque de TI – Madeireira Brotas</title>
+  <title>Estoque de TI – IS DevWorks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <style>
     :root {
@@ -469,7 +469,7 @@
         <div class="logo"><img src="/logo.png" alt="IS DevWorks"></div>
         <div>
           <h1>Estoque de TI</h1>
-          <div class="sub">Peças sobressalentes · Madeireira Brotas</div>
+          <div class="sub">Peças sobressalentes · IS DevWorks</div>
         </div>
       </div>
       <div class="act"><button id="bu">Unidades</button><button id="bus" style="display:none">Usuários</button><button
@@ -493,7 +493,7 @@
   </main>
   <script>
     const CATS = ["Memória RAM", "HD/SSD", "Fonte", "Placa-mãe", "Monitor", "Teclado/Mouse", "Cabo/Conector", "Switch/Roteador", "Impressora/Toner", "Nobreak/Bateria", "Computador completo", "Outros"];
-    let units = ["Madeireira Brotas Matriz", "Madeireira Brotas Cajazeiras", "Madeireira Brotas Imbui", "Madeireira Brotas Lisboa", "Madeireira Brotas Itapoan", "Madeireira Brotas Angra", "Madeireira Brotas Camaçari", "Madeireira Brotas Imecol", "Madeireira Brotas San Martim", "Madeireira Brotas Vinhais"], parts = [], db = null, fu = "";
+    let units = ["Empresa 1", "Empresa 2", "Empresa 3", "Empresa 4"], parts = [], db = null, fu = "";
     const $ = id => document.getElementById(id), esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const out = p => (p.emp || []).reduce((a, e) => a + e.qtd, 0), av = p => p.qtd - out(p);
     const api = (m, u, b) => fetch(u, { method: m, headers: { "Content-Type": "application/json" }, body: b ? JSON.stringify(b) : undefined }).then(r => { if (r.status == 401) { location.replace("/login.html"); throw new Error(401) } if (!r.ok) throw new Error(r.status); return r.json() });

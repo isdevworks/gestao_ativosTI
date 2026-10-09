@@ -5,193 +5,75 @@
     <meta charset="utf-8">
     <title>Entrar – Estoque de TI - IS DevWorks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <script>try { var t = localStorage.tema; if (t) document.documentElement.dataset.theme = t } catch (e) { }</script>
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon-192.png">
     <link rel="apple-touch-icon" href="/icon-192.png">
-    <meta name="theme-color" content="#1b3f94">
+    <meta name="theme-color" content="#132f4b">
     <style>
         :root {
             box-sizing: border-box;
-            --bg: #f4f6fb;
-            --card: #fff;
-            --tx: #14213d;
-            --mut: #66708a;
-            --bd: #dde3f0;
-            --ac: #1b3f94;
-            --acx: #fff;
-            --gold: #ffc502;
-            --red: #d9232d;
-            --bad: #b3392f;
-            --top: #1b3f94
+            --bg: #f1f4f8; --card: #fff; --tx: #11263c; --mut: #5d6b7e; --bd: #d9e0ea;
+            --ac: #132f4b; --acx: #fff; --acc: #2f7de1; --bad: #b3392f; --hd: #132f4b
         }
 
         @media (prefers-color-scheme:dark) {
-            :root {
-                --bg: #0b1429;
-                --card: #15233f;
-                --tx: #eef2fb;
-                --mut: #9fb0d3;
-                --bd: #26375f;
-                --ac: #ffc502;
-                --acx: #0f1a33;
-                --bad: #ef7b70;
-                --top: #101e3d
+            :root:not([data-theme="light"]) {
+                --bg: #08121f; --card: #0f2034; --tx: #e8eef6; --mut: #93a5bb; --bd: #1f3550;
+                --ac: #5aa9ff; --acx: #06121f; --acc: #5aa9ff; --bad: #f0877d; --hd: #0b1a2b
             }
         }
 
-        * {
-            box-sizing: border-box
+        :root[data-theme="dark"] {
+            --bg: #08121f; --card: #0f2034; --tx: #e8eef6; --mut: #93a5bb; --bd: #1f3550;
+            --ac: #5aa9ff; --acx: #06121f; --acc: #5aa9ff; --bad: #f0877d; --hd: #0b1a2b
         }
 
-        html,
+        * { box-sizing: border-box }
+        html, body { min-height: 100% }
         body {
-            min-height: 100%
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: linear-gradient(var(--top) 0 38vh, var(--bg) 38vh);
+            margin: 0; min-height: 100vh;
+            background: linear-gradient(var(--hd) 0 36vh, var(--bg) 36vh);
             color: var(--tx);
             font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            padding-top: max(16px, env(safe-area-inset-top));
-            padding-bottom: max(16px, env(safe-area-inset-bottom))
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 16px; padding-top: max(16px, env(safe-area-inset-top)); padding-bottom: max(16px, env(safe-area-inset-bottom))
         }
+        body::before { content: ""; position: fixed; left: 0; right: 0; top: calc(36vh - 4px); height: 4px; background: var(--acc) }
 
-        body::before {
-            content: "";
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 38vh;
-            height: 6px;
-            background: var(--gold);
-            box-shadow: 0 6px 0 var(--red)
+        #bt {
+            position: fixed; top: max(12px, env(safe-area-inset-top)); right: 12px; margin: 0; width: auto;
+            padding: 8px 14px; background: #ffffff14; border: 1px solid #ffffff3d; color: #fff
         }
 
         .box {
-            position: relative;
-            background: var(--card);
-            border: 1px solid var(--bd);
-            border-radius: 18px;
-            padding: 28px 24px 24px;
-            width: 100%;
-            max-width: 380px;
-            display: grid;
-            gap: 10px;
-            box-shadow: 0 18px 50px #0a12283a
+            position: relative; background: var(--card); border: 1px solid var(--bd); border-radius: 18px;
+            padding: 28px 24px 24px; width: 100%; max-width: 380px; display: grid; gap: 10px; box-shadow: 0 18px 50px #0a12283a
         }
-
         .logo {
-            justify-self: center;
-            margin-top: -78px;
-            background: #fff;
-            border-radius: 24px;
-            padding: 8px;
-            box-shadow: 0 6px 20px #0a122850;
-            border: 4px solid var(--gold)
+            justify-self: center; margin-top: -76px; width: 190px; height: 82px; background: #fff;
+            border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px #0a122855; border: 3px solid var(--acc)
         }
-
-        .logo img {
-            height: 112px;
-            width: 112px;
-            display: block;
-            object-fit: contain
-        }
-
-        h1 {
-            font-size: 22px;
-            margin: 10px 0 0;
-            text-align: center;
-            font-weight: 800;
-            letter-spacing: -.01em
-        }
-
-        .sub {
-            color: var(--mut);
-            font-size: 13px;
-            text-align: center;
-            margin-bottom: 8px
-        }
-
-        label {
-            font-size: 13px;
-            color: var(--mut)
-        }
-
-        input {
-            font: inherit;
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--bd);
-            border-radius: 10px;
-            background: var(--bg);
-            color: var(--tx)
-        }
-
-        input:focus-visible,
-        button:focus-visible {
-            outline: 3px solid var(--gold);
-            outline-offset: 1px
-        }
-
-        button {
-            font: inherit;
-            cursor: pointer;
-            border: 0;
-            border-radius: 10px;
-            padding: 13px;
-            background: var(--ac);
-            color: var(--acx);
-            font-weight: 700;
-            margin-top: 6px;
-            transition: filter .15s, transform .1s
-        }
-
-        button:hover {
-            filter: brightness(1.12)
-        }
-
-        button:active {
-            transform: scale(.98)
-        }
-
-        button:disabled {
-            opacity: .6
-        }
-
-        .err {
-            color: var(--bad);
-            font-size: 13px;
-            min-height: 18px;
-            text-align: center
-        }
-
-        footer {
-            margin-top: 20px;
-            color: var(--mut);
-            font-size: 12.5px;
-            text-align: center
-        }
-
-        footer b {
-            color: var(--tx)
-        }
-
-        @media(prefers-reduced-motion:reduce) {
-            * {
-                transition: none !important
-            }
-        }
+        .logo img { width: 100%; height: 100%; object-fit: cover; display: block }
+        h1 { font-size: 22px; margin: 10px 0 0; text-align: center; font-weight: 800; letter-spacing: -.01em }
+        .sub { color: var(--mut); font-size: 13px; text-align: center; margin-bottom: 8px }
+        label { font-size: 13px; color: var(--mut) }
+        input { font: inherit; width: 100%; padding: 12px; border: 1px solid var(--bd); border-radius: 10px; background: var(--bg); color: var(--tx) }
+        input:focus-visible, button:focus-visible { outline: 3px solid var(--acc); outline-offset: 1px }
+        button { font: inherit; cursor: pointer; border: 0; border-radius: 10px; padding: 13px; background: var(--ac); color: var(--acx); font-weight: 700; margin-top: 6px; transition: filter .15s, transform .1s }
+        button:hover { filter: brightness(1.12) }
+        button:active { transform: scale(.98) }
+        button:disabled { opacity: .6 }
+        .err { color: var(--bad); font-size: 13px; min-height: 18px; text-align: center }
+        footer { margin-top: 20px; color: var(--mut); font-size: 12.5px; text-align: center }
+        footer b { color: var(--tx) }
+        @media(prefers-reduced-motion:reduce) { * { transition: none !important } }
     </style>
 </head>
 
 <body>
+    <button id="bt" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">◐</button>
     <form class="box" id="f" autocomplete="on">
         <div class="logo"><img src="/logo.png" alt="IS DevWorks"></div>
         <h1>Estoque de TI</h1>
@@ -206,6 +88,7 @@
         reservados</footer>
     <script>
         document.getElementById("yr").textContent = new Date().getFullYear();
+        document.getElementById("bt").onclick = () => { const d = (document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light")) == "dark" ? "light" : "dark"; document.documentElement.dataset.theme = d; try { localStorage.tema = d } catch (e) { } };
         fetch("/api/me").then(r => { if (r.ok) location.replace("/") }).catch(() => { });
         document.getElementById("f").addEventListener("submit", async ev => {
             ev.preventDefault(); const b = document.getElementById("b"), e = document.getElementById("e"); b.disabled = true; e.textContent = "";

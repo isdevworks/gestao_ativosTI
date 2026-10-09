@@ -1,0 +1,5 @@
+node_modules/
+estoque.db
+estoque.db-shm
+estoque.db-wal
+.env
